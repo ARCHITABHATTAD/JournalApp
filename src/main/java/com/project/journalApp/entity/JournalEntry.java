@@ -13,7 +13,7 @@ import java.util.Date;
 //@Getter
 //@Setter
 //@Builder
-//@NoArgsConstructor
+@NoArgsConstructor
 //@AllArgsConstructor
 //@ToString
 //@EqualsAndHashCode
