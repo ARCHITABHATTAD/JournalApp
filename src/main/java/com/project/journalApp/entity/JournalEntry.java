@@ -14,7 +14,7 @@ import java.util.Date;
 //@Setter
 //@Builder
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 //@ToString
 //@EqualsAndHashCode
 @Data
@@ -22,7 +22,6 @@ public class JournalEntry {
 
     @Id
     private ObjectId id;
-    @NonNull
     private String title;
     private String content;
     private LocalDateTime date;

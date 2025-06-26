@@ -33,5 +33,9 @@ public class User {
     private String password;
     @DBRef
     private List<JournalEntry> journalEntries = new ArrayList<>();
+    private List<String>roles;
 
 }
+
+
+//https://www.youtube.com/watch?v=Cx81dki8BTA&list=PLA3GkZPtsafacdBLdd3p1DyRd5FGfr3Ue&index=16

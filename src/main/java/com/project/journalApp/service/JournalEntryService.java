@@ -23,27 +23,29 @@ public class JournalEntryService {
     @Autowired
     private UserService userService;
     
-    @Transactional //(atomicity achieved here)
+    //@Transactional //(atomicity achieved here)
     public void saveEntry(JournalEntry journalEntry, String userName){
         try{
             User user = userService.findByUserName(userName);
-            journalEntry.setDate(LocalDateTime.now());
+            if (journalEntry.getDate() == null) {
+                journalEntry.setDate(LocalDateTime.now());
+            }
+            //journalEntry.setDate(LocalDateTime.now());
             JournalEntry saved = journalEntryRepository.save(journalEntry);
             user.getJournalEntries().add(saved);
-            user.setUserName(null);
             userService.saveEntry(user);
         } catch (Exception e) {
-            System.out.println(e);
+            log.error("e: ", e);
             throw new RuntimeException("An error occured while saving the entry." ,e);
         }
     }
 
     public void saveEntry(JournalEntry journalEntry){
-        try{
+//        try{
             journalEntryRepository.save(journalEntry);
-        }catch(Exception e){
-            log.error("Exception ",e);
-        }
+//        }catch(Exception e){
+//            log.error("Exception ",e);
+//        }
     }
 
     public List<JournalEntry> getAll(){
@@ -56,9 +58,10 @@ public class JournalEntryService {
 
     public void deleteById(ObjectId id, String userName){
         User user = userService.findByUserName(userName);
-        user.getJournalEntries().removeIf(x->x.getId().equals(id));
-        userService.saveEntry(user);
-        journalEntryRepository.deleteById(id);
+        boolean b = user.getJournalEntries().removeIf(x -> x.getId().equals(id));
+        if(b){
+            userService.saveEntry(user);
+            journalEntryRepository.deleteById(id);
+        }
     }
-
 }
