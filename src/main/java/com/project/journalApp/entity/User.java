@@ -1,6 +1,7 @@
 package com.project.journalApp.entity;
 
 import com.project.journalApp.entity.JournalEntry;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
 import org.bson.types.ObjectId;
@@ -22,6 +23,7 @@ import java.util.List;
 //@ToString
 //@EqualsAndHashCode
 @Data
+@Builder
 public class User {
 
     @Id
@@ -36,6 +38,3 @@ public class User {
     private List<String>roles;
 
 }
-
-
-//https://www.youtube.com/watch?v=Cx81dki8BTA&list=PLA3GkZPtsafacdBLdd3p1DyRd5FGfr3Ue&index=16
