@@ -1,11 +1,8 @@
-package com.project.journalApp.controller;
+package com.project.JournalApp.Controller;
 
-import com.project.journalApp.entity.JournalEntry;
-import com.project.journalApp.entity.User;
-import com.project.journalApp.repository.UserRepository;
-import com.project.journalApp.service.JournalEntryService;
-import com.project.journalApp.service.UserService;
-import org.bson.types.ObjectId;
+import com.project.JournalApp.Entity.User;
+import com.project.JournalApp.Repository.UserRepository;
+import com.project.JournalApp.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,11 +18,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+    private final UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    UserController(UserService userService,UserRepository userRepository){
+        this.userRepository = userRepository;
+        this.userService = userService;
+    }
 
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 

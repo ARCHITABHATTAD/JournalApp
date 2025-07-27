@@ -1,8 +1,8 @@
-package com.project.journalApp.service;
+package com.project.JournalApp.Service;
 
-import com.project.journalApp.entity.JournalEntry;
-import com.project.journalApp.entity.User;
-import com.project.journalApp.repository.JournalEntryRepository;
+import com.project.JournalApp.Entity.JournalEntry;
+import com.project.JournalApp.Entity.User;
+import com.project.JournalApp.Repository.JournalEntryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
@@ -18,11 +18,14 @@ import java.util.Optional;
 @Component
 public class JournalEntryService {
 
-    @Autowired
-    private JournalEntryRepository journalEntryRepository;
+    private final JournalEntryRepository journalEntryRepository;
+    private final UserService userService;
 
     @Autowired
-    private UserService userService;
+    JournalEntryService(UserService userService, JournalEntryRepository journalEntryRepository){
+        this.userService = userService;
+        this.journalEntryRepository = journalEntryRepository;
+    }
     private static final Logger logger = LoggerFactory.getLogger(JournalEntryService.class);
     
     //@Transactional //(atomicity achieved here)

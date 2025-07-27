@@ -1,7 +1,7 @@
-package com.project.journalApp.service;
+package com.project.JournalApp.Service;
 
-import com.project.journalApp.entity.User;
-import com.project.journalApp.repository.UserRepository;
+import com.project.JournalApp.Entity.User;
+import com.project.JournalApp.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,8 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+    private final UserRepository userRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    UserDetailsServiceImpl(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
 
 
     @Override

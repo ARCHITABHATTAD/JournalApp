@@ -1,6 +1,5 @@
-package com.project.journalApp.entity;
+package com.project.JournalApp.Entity;
 
-import com.project.journalApp.entity.JournalEntry;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
@@ -10,7 +9,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

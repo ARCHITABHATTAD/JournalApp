@@ -1,7 +1,7 @@
-package com.project.journalApp.controller;
+package com.project.JournalApp.Controller;
 
-import com.project.journalApp.entity.User;
-import com.project.journalApp.service.UserService;
+import com.project.JournalApp.Entity.User;
+import com.project.JournalApp.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +13,12 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    AdminController(UserService userService){
+        this.userService = userService;
+    }
 
     @GetMapping("/all-users")
     public ResponseEntity<?> getAllUsers(){

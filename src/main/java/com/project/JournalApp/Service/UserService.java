@@ -1,9 +1,7 @@
-package com.project.journalApp.service;
+package com.project.JournalApp.Service;
 
-import com.project.journalApp.entity.JournalEntry;
-import com.project.journalApp.entity.User;
-import com.project.journalApp.repository.JournalEntryRepository;
-import com.project.journalApp.repository.UserRepository;
+import com.project.JournalApp.Entity.User;
+import com.project.JournalApp.Repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
@@ -13,8 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,10 +35,10 @@ public class UserService {
             userRepository.save(user);
         } catch (Exception e) {
             log.error("error occurred for : {}",user.getUserName(),e);
-            log.warn("hehehehe: ");
-            log.info("hehehehe: ");
-            log.debug("hehehehe: ");
-            log.trace("hehehehe: ");
+//            log.warn("hehehehe: ");
+//            log.info("hehehehe: ");
+//            log.debug("hehehehe: ");
+//            log.trace("hehehehe: ");
         }
     }
 

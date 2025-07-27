@@ -1,7 +1,7 @@
-package com.project.journalApp.controller;
+package com.project.JournalApp.Controller;
 
-import com.project.journalApp.entity.User;
-import com.project.journalApp.service.UserService;
+import com.project.JournalApp.Entity.User;
+import com.project.JournalApp.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/public")
 public class PublicController {
 
+    private final UserService userService;
+
+
     @Autowired
-    private UserService userService;
+    PublicController(UserService userService){
+        this.userService = userService;
+    }
 
     @GetMapping("/health-check")
     public String healthCheck(){

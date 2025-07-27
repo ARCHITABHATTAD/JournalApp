@@ -1,9 +1,9 @@
-package com.project.journalApp.controller;
+package com.project.JournalApp.Controller;
 
-import com.project.journalApp.entity.JournalEntry;
-import com.project.journalApp.entity.User;
-import com.project.journalApp.service.JournalEntryService;
-import com.project.journalApp.service.UserService;
+import com.project.JournalApp.Entity.JournalEntry;
+import com.project.JournalApp.Entity.User;
+import com.project.JournalApp.Service.JournalEntryService;
+import com.project.JournalApp.Service.UserService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,11 +19,15 @@ import java.util.stream.Collectors;
 @RequestMapping("/journal")
 public class JournalEntryController {
 
-    @Autowired
-    private JournalEntryService journalEntryService;
+
+    private final JournalEntryService journalEntryService;
+    private final UserService userService;
 
     @Autowired
-    private UserService userService;
+    JournalEntryController(JournalEntryService journalEntryService,UserService userService){
+        this.journalEntryService = journalEntryService;
+        this.userService = userService;
+    }
 
     @GetMapping
     public ResponseEntity<?> getAllJournalEntriesOfUser(){

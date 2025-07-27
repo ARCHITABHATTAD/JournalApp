@@ -1,7 +1,7 @@
-package com.project.journalApp.service;
+package com.project.JournalApp.Service;
 
-import com.project.journalApp.entity.User;
-import com.project.journalApp.repository.UserRepository;
+import com.project.JournalApp.Entity.User;
+import com.project.JournalApp.Repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
